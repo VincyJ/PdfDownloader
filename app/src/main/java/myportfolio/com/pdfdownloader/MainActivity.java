@@ -2,10 +2,9 @@ package myportfolio.com.pdfdownloader;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+
+import com.joanzapata.pdfview.PDFView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WebView webview = (WebView) findViewById(R.id.webview);
+        /*WebView webview = (WebView) findViewById(R.id.webview);
 
         progressbar = (ProgressBar) findViewById(R.id.progressbar);
         webview.getSettings().setJavaScriptEnabled(true);
@@ -29,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
                 // do your stuff here
                 progressbar.setVisibility(View.GONE);
             }
-        });
+        });*/
+
+        PDFView pdfView = findViewById(R.id.pdfview);
+        pdfView.fromAsset("pdf.pdf")
+                .pages(0, 2, 1, 3, 3, 3)
+                .defaultPage(1)
+                .showMinimap(false)
+                .enableSwipe(true)
+                .load();
+
     }
 }
